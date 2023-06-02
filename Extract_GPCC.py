@@ -1,9 +1,9 @@
 #%%
-#Extract multiple CRU data from multiple shapefiles
+#Extract multiple GPCC data from multiple shapefiles
 __author__ = "Carlos Eduardo Sousa Lima"
 __license__ = "GPL"
 __version__ = "2.0"
-__email__ = "ce-lima@hotmail.com"
+__email__ = "eduardolima@alu.ufc.br"
 __maintainer__ = "Carlos Eduardo Sousa Lima"
 __status__ = "Production"
 
@@ -64,4 +64,4 @@ for dir_shp in list_shp:
         var,
         merged_df.columns[2].year,
         merged_df.columns[-1].year),
-    sep = ";", index = True, index_label = "Data", header = ["Pr"])      
+    sep = ";", index = True, index_label = "Data", header = [var])      
