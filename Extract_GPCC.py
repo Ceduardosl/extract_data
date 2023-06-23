@@ -30,9 +30,12 @@ for dir_shp in list_shp:
         shp_point = gpd.GeoDataFrame(df_point,
                                     geometry = gpd.points_from_xy(df_point.lon, df_point.lat),
                                     crs = shp_basin.crs)
-        
+        #geometry = shp_basin.evelope caso queira que os dados 
+        #sejam extraidos para a quadrícula que contém a shapefile
+        #geometry = shp_basin.geometry caso queira que os dados
+        #sejam extraidos para geometria exata da shapefile
         gdf_result = gpd.sjoin(shp_point,
-                        gpd.GeoDataFrame(geometry = shp_basin.envelope),
+                        gpd.GeoDataFrame(geometry = shp_basin.envelope), 
                         how = "left")
         gdf_result = gdf_result.loc[~np.isnan(gdf_result["index_right"])]
         ins_point = gdf_result[["lon", "lat"]].values[:]
